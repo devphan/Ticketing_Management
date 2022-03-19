@@ -1,0 +1,22 @@
+{
+  "name": "ticket_manager",
+  "version": "1.0.0",
+  "description": "ticket sales",
+  "main": "index.js",
+  "repository": "https://github.com/devphan/Ticketing_Management.git",
+  "author": "Phan Van Long",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.17.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
