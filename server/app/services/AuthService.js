@@ -1,10 +1,12 @@
 const userRepo = require("../repositories/UserRepository");
+const checkPassword = require("../utils/checkPassword");
+const generateToken = require("../utils/generateToken");
 
 
 class AuthService {
     async register({ fullName, email, password, phone, avatar }) {
-        const userFind = await userRepo.findByEmail(email);
-        if (userFind)
+        const user = await userRepo.findByEmail(email);
+        if (user)
             return {
                 status: 400,
                 error: 1,
@@ -26,6 +28,33 @@ class AuthService {
             data: newUser
         };
     }
+
+    async login({ email, password }) {
+        const user = await userRepo.findByEmail(email);
+        if (!user)
+            return {
+                status: 400,
+                error: 1,
+                message: 'email_not_found_or_password_incorrect',
+                data: null
+            };
+        if (!checkPassword(password, user.password))
+            return {
+                status: 400,
+                error: 1,
+                message: 'email_not_found_or_password_incorrect',
+                data: null
+            }
+        const token = generateToken(user);
+        return {
+            status: 200,
+            error: 0,
+            message: 'login_success',
+            data: token
+        }
+    };
+
+
 
 }
 
