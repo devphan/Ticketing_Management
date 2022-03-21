@@ -5,7 +5,7 @@ const generateToken = require("../utils/generateToken");
 
 class AuthService {
     async register({ fullName, email, password, phone, avatar }) {
-        const user = await userRepo.findByEmail(email);
+        let user = await userRepo.findByEmail(email);
         if (user)
             return {
                 status: 400,
@@ -13,8 +13,8 @@ class AuthService {
                 message: 'email_is_existed',
                 data: null
             };
-        const newUser = await userRepo.register({ fullName, email, password, phone, avatar });
-        if (!newUser)
+        user = await userRepo.register({ fullName, email, password, phone, avatar });
+        if (!user)
             return {
                 status: 500,
                 error: 1,
@@ -25,7 +25,7 @@ class AuthService {
             status: 201,
             error: 1,
             message: 'created_user_success',
-            data: newUser
+            data: user
         };
     }
 
