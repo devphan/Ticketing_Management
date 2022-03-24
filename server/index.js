@@ -1,3 +1,4 @@
+'use strict';
 const express = require('express');
 const rootRouter = require('./app/routers');
 const app = express();
