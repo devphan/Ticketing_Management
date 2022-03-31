@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      fullName: {
+      full_name: {
         allowNull: false,
         type: Sequelize.STRING
       },
@@ -32,11 +32,11 @@ module.exports = {
         type: Sequelize.STRING,
         defaultValue: 'client'
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }

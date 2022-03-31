@@ -9,11 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({Station}) {
+    static associate({ Station, Ticket }) {
       // define association here
-      this.belongsTo(Station, {foreignKey: 'fromStation', as: 'from'});
-      this.belongsTo(Station, {foreignKey: 'toStation', as: 'to'});
-      this.belongsToMany(Station, {through: 'tickets'});
+      this.belongsTo(Station, { foreignKey: 'fromStation', as: 'from' });
+      this.belongsTo(Station, { foreignKey: 'toStation', as: 'to' });
+      this.hasMany(Ticket, { foreignKey: 'tripId' });
     }
   }
   Trip.init({
@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.FLOAT
   }, {
     sequelize,
+    underscored: true,
     modelName: 'Trip',
   });
   return Trip;

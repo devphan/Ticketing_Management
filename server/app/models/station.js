@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     province: DataTypes.STRING
   }, {
     sequelize,
+    underscored: true,
     modelName: 'Station',
   });
   return Station;

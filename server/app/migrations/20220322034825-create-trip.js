@@ -8,31 +8,31 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      fromStation: {
+      from_station: {
         type: Sequelize.INTEGER,
         references: {
           model: 'stations',
           key: 'id'
         }
       },
-      toStation: {
+      to_station: {
         type: Sequelize.INTEGER,
         references: {
           model: 'stations',
           key: 'id'
         }
       },
-      startTime: {
+      start_Time: {
         type: Sequelize.DATE
       },
       price: {
         type: Sequelize.FLOAT
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }
