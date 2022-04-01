@@ -30,7 +30,7 @@ class AuthService {
     }
 
     async login({ email, password }) {
-        const user = await userRepo.findByEmail(email);
+        const user = await userRepo.findByEmailCheckPassword(email);
         if (!user)
             return {
                 status: 400,
