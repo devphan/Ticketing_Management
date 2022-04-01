@@ -6,6 +6,10 @@ class TicketRepository {
         return await Ticket.create({ userId, tripId });
     };
 
+    async getAllTicketOfUser(userId) {
+        return await Ticket.findAll({ where: { userId } });
+    }
+
 }
 
 module.exports = new TicketRepository();

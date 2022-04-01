@@ -17,8 +17,28 @@ class TicketService {
             message: 'create_success',
             data: ticket
         }
-    }
+    };
+
+    async getAllTicketOfUser(userId) {
+        const tickets = await ticketRepo.getAllTicketOfUser(userId);
+        if (!tickets)
+            return {
+                status: 404,
+                error: 1,
+                message: 'ticket_not_found',
+                data: null
+            };
+        return {
+            status: 200,
+            error: 0,
+            message: 'list_tickets',
+            data: tickets
+        }
+    };
+
+
 }
+
 
 module.exports = new TicketService();
 

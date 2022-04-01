@@ -1,8 +1,9 @@
 const express = require('express'); 
 const ticketCtrl = require('../controllers/TicketController');
-const verifyToken = require('../middleware/verifyToken');
+const verifyToken = require('../middleware/auth/verifyToken');
 const ticketRouter = express.Router();
 
-ticketRouter.post('/', verifyToken ,ticketCtrl.create);
+ticketRouter.get('/', verifyToken, ticketCtrl.getAllByUser)
+ticketRouter.post('/', verifyToken ,ticketCtrl.buy);
 
 module.exports = ticketRouter;
