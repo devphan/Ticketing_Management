@@ -54,6 +54,25 @@ class AuthService {
         }
     };
 
+    async uploadAvatar({ email, avatar }) {
+        let user = await userRepo.findByEmail(email);
+        if (!user)
+            return {
+                status: 403,
+                error: 1,
+                message: 'Forbidden',
+                data: null
+
+            };
+        await userRepo.uploadAvatar({ email, avatar });
+        user = await userRepo.findByEmail(email);
+        return {
+            status: 200,
+            error: 0,
+            message: 'upload-avatar_success',
+            data: user
+        };
+    }
 
 
 }

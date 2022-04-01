@@ -4,15 +4,19 @@ class AuthController {
     async register(req, res) {
         const { fullName, email, password, phone, avatar } = req.body;
         const result = await authService.register({ fullName, email, password, phone, avatar });
-        return res.status(result.status).send(result)
-    }
+        return res.status(result.status).send(result);
+    };
 
     async login(req, res) {
         const { email, password } = req.body;
         const result = await authService.login({ email, password });
-        return res.status(result.status).send(result)
-    }
+        return res.status(result.status).send(result);
+    };
 
+    async uploadAvatar(req, res) {
+        const result = await authService.uploadAvatar({ email: req.payload.email, avatar: req.file.path });
+        return res.status(result.status).send(result);
+    };
 
 }
 
