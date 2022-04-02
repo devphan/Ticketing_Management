@@ -9,11 +9,11 @@ B3: Mở thư mục "server" bằng VS code và tạo file ```.env```  <br/>
 B4: Copy nội dung file ```.env.example``` vào file ```.env``` và điền đầy đủ các thuộc tính <br/>
 
 ### Run project
-#### Install all package
+#### -  Install all package
 ```shell
 yarn install
 ```
-#### Start server
+#### - Start server
 ```shell
 yarn start
 ```
