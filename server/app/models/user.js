@@ -16,12 +16,44 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    fullName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    phone: DataTypes.STRING,
-    avatar: DataTypes.STRING,
-    type: DataTypes.STRING,
+    fullName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        checkLen(value) {
+          if (value.length < 5)
+            throw new Error('The full name length should more than 5 characters');
+        }
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isEmail: true,
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      }
+    },
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        is: /(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b/
+      }
+    },
+    avatar: {
+      type: DataTypes.STRING,
+    },
+    type: {
+      type: DataTypes.STRING,
+      defaultValue: 'client'
+    },
   }, {
     sequelize,
     underscored: true,

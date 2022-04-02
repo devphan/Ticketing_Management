@@ -22,7 +22,7 @@ module.exports = {
           key: 'id'
         }
       },
-      start_Time: {
+      start_time: {
         type: Sequelize.DATE
       },
       price: {
