@@ -23,6 +23,14 @@ app.use((req, res, next) => {
 
 // error handler
 app.use((err, req, res, next) => {
+
+  if (err.name === 'SequelizeValidationError')
+    return res.json({
+      error: err.error,
+      message: err.errors.map(e => e.message),
+      status: 400,
+      data: null
+    });
   return res.json({
     error: err.error,
     message: err.message,

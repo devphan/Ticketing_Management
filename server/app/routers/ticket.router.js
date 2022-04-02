@@ -1,9 +1,12 @@
-const express = require('express'); 
+const express = require('express');
 const ticketCtrl = require('../controllers/TicketController');
-const verifyToken = require('../middleware/auth/verifyToken');
-const ticketRouter = express.Router();
+const authen = require('../middleware/auth/authenticate');
+// const ticketRouter = express.Router();
+const ticketRouter = require('express-promise-router')();
 
-ticketRouter.get('/', verifyToken, ticketCtrl.getAllByUser)
-ticketRouter.post('/', verifyToken ,ticketCtrl.buy);
+ticketRouter.use(authen);
+
+ticketRouter.get('/', ticketCtrl.getAllByUser)
+ticketRouter.post('/', ticketCtrl.buy);
 
 module.exports = ticketRouter;
