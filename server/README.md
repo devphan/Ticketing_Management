@@ -1,5 +1,5 @@
 ### PROJECT: API dự án quản lí bán vé xe
-- TÍNH NĂNG CƠ BẢN: crud bến xe, chuyến đi, mua vé xe, quản lí vé xe của người dùng ... đăng nhập  với jwt, phân quyền quản trị, upload ảnh mới multer
+- TÍNH NĂNG CƠ BẢN: crud bến xe, chuyến đi, mua vé xe, quản lí vé xe của người dùng ... đăng nhập  với jwt, phân quyền quản trị, upload ảnh với multer
 
 
 ### Setup project
